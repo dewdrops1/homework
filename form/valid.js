@@ -3,7 +3,7 @@
     win.valid = function (option) {
         el = document.getElementById(option.el);
         for(var item in option.rules){
-            value=el[item].value;
+           var value=el[item].value;
             (function(){
                 document.getElementById(arguments[0][0].messagetag).innerHTML="";
                 document.getElementById(arguments[0][1].messagetag).innerHTML="";
