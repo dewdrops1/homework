@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #reigist fieldset{
+            width: 700px;
+            margin: 50px auto;
+            background: #eee;
+            border-radius: 6px;
+        }
+        .items{
+            display: inline-block;
+            width: 60px;
+            text-align: right;
+            margin-right: 20px;
+        }
+        p{
+            width: 60%;
+            margin: 30px auto;
+        }
+        input{
+            outline: none;
+        }
+        .btn{
+            width: 80px;
+            margin-left: 100px;
+            border-radius: 3px;
+            width: 80px;
+            text-align: center;
+            height: 30px;
+            background:rgb(247, 72, 72);
+            color:white;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            line-height: 30px;
+        }
+        #usernametag,#passwordtag,#emailtag{
+            color: rgb(247, 72, 72);
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="reigist" action="">
+        <fieldset>
+            <legend>
+                <h1>注册</h1>
+            </legend>
+            <p>
+                <span class="items">用户名:</span>
+                <input type="text" name="username" placeholder="用户名" value="lili">
+                <span id="usernametag"></span>
+            </p>
+            <p>
+                <span class="items">密码:</span>
+                <input type="text" name="password" placeholder="密码" value="1212333">
+                <span id="passwordtag"></span>
+            </p>
+            <p>
+                <span class="items">邮箱:</span>
+                <input type="text" name="email" placeholder="邮箱" value='123@qq.com'>
+                <span id="emailtag"></span>
+            </p>
+            <p>
+                <input type="button" onclick="fun()" value="提交" class="btn">
+            </p>
+        </fieldset>
+    </form>
+    <script src="./valid.js"></script>
+    <script>
+        function fun(){
+            valid({
+                el: 'reigist',
+                rules: {
+                    'username':[{
+                            reg:/^\s*$/g,
+                            message: '用户名不能为空',
+                            messagetag: 'usernametag'     
+                        },{
+                            reg: /^[a-zA-Z].{5,49}$/,
+                            message: '用户名必须6-50字符间',
+                            messagetag: 'usernametag'     
+                        }],
+                    'password':[{
+                            reg:/^\s*$/g,
+                            message: '密码不能为空',
+                            messagetag:'passwordtag'
+                        },{
+                            reg: /^.{6,18}$/,
+                            message: '密码必须6-18字符间',
+                            messagetag:'passwordtag'
+                        }],
+                    'email':[ {
+                            reg:/^\s*$/g,
+                            message:'邮箱不能为空',
+                            messagetag:'emailtag'
+                        },{
+                            reg: /^\w+@\w+\.(com)|(net)$/,
+                            message:'邮箱格式非法',
+                            messagetag:'emailtag'
+                        }]
+                }
+            })
+        }
+    
+    </script>
+</body>
+
+</html>
